@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { evaluate } from 'mathjs';
 
 // Componentes
 import Boton from './componentes/Boton'
@@ -15,6 +16,10 @@ function App() {
   const agregarInput = val => {
 	  setInput(input + val);
   };
+
+	const calcularResultado = () => {
+		setInput(evaluate(input));
+	};
 
   return (
     <>
@@ -32,13 +37,13 @@ function App() {
 				  <Boton manejarClick={ agregarInput }>1</Boton>
 				  <Boton manejarClick={ agregarInput }>2</Boton>
 				  <Boton manejarClick={ agregarInput }>3</Boton>
-				  <Boton maneharClick={ agregarInput }>+</Boton>
+				  <Boton manejarClick={ agregarInput }>+</Boton>
 			  </div>
 			  <div className='fila'>
 				  <Boton manejarClick={ agregarInput }>4</Boton>
 				  <Boton manejarClick={ agregarInput }>5</Boton>
 				  <Boton manejarClick={ agregarInput }>6</Boton>
-				  <Boton maneharClick={ agregarInput }>-</Boton>
+				  <Boton manejarClick={ agregarInput }>-</Boton>
 			  </div>
 			  <div className='fila'>
 				  <Boton manejarClick={ agregarInput }>7</Boton>
@@ -47,13 +52,15 @@ function App() {
 				  <Boton manejarClick={ agregarInput }>*</Boton>
 			  </div>
 			  <div className='fila'>
-				  <Boton manejarClick={ agregarInput }>=</Boton>
+				  <Boton manejarClick={ calcularResultado }>=</Boton>
 				  <Boton manejarClick={ agregarInput }>0</Boton>
 				  <Boton manejarClick={ agregarInput }>.</Boton>
 				  <Boton manejarClick={ agregarInput }>/</Boton>
 			  </div>
 			  <div className='fila'></div>
-			  <BotonClear manejarClear={() => setInput('') }>Clear</BotonClear>
+			  <BotonClear manejarClear={() => setInput('') }>
+			   Clear
+			  </BotonClear>
 		  </div>
       </div>
     </>
